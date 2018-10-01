@@ -1,13 +1,13 @@
 # FACTOID QUESTION ANSWERING CHATBOT
 
 
-Factoid Question Answering Chatbot is a simpler version of question answering system. It answers to the question asked by user in near real time using information retrieval and natural language processing technique. Chatbot is able to answer Factoid and Summarization based question from article of various domains with an accuracy of 70.16% (measured on SQuAD dataset of stanford).
+Factoid Question Answering Chatbot is a simpler version of question-answering system. It answers to the question asked by the user in near real time using information retrieval and natural language processing technique. Chatbot is able to answer Factoid and Summarization based question from articles of various domains with an accuracy of 70.16% (measured on SQuAD dataset of Stanford).
 
 ## SYNOPSIS
 
 To run bot:
 ```sh
-	$ python3 P2.py <path_to_article>
+	$ python3 P2.py < path_to_article>
 ```
 
 For example:
@@ -15,31 +15,31 @@ For example:
 	$ python3 P2.py dataset/Marvel_Comics.txt
 ```
 
-Once bot is up and start running, it will ask you to enter your question. And respond with answer.
+Once the bot is up and starts running, it will ask you to enter your question and then it'll respond with an answer.
 
 ## METHODOLOGY
 
-Architecture of this bot closely follow the architecture described in the book. Main modules of the QA System are:
+Architecture of this bot closely follows the architecture described in the book. Main modules of the QA System are:
 
-> **Question Processing** : In this step, bot identifies type of question and
-	type of answer it expects
+> **Question Processing** : In this step, bot identifies the type of the question and
+	the type of the answer it expects
 
-> **Passage Retrieval** : It generates question vector and vectors of passage
-	using TF-IDF as feature, it computes cosine similarity between question 
-	vector and passage vector returning top 3 closely resembling passage. Furthur
-	improvement to this step has been done by removing Stop Words and using 
+> **Passage Retrieval** : It generates question vector and vector of passage
+	using TF-IDF as feature. It computes cosine similarity between question 
+	vector and passage vector returning top 3 closely resembling passages. Furthur
+	improvement to this step has been done by removing STOP WORDS and using 
 	Porter Stemmer
 
-> **Sentence Retrieval** : After retrieving passage, it tokenize sentences and
-	computes ngram similarity between question and sentence. Thus identifying 
-	most relevant sentences. 
+> **Sentence Retrieval** : After retrieving the passage, it tokenizes the sentences and
+	computes ngram similarity between question and sentence, thus identifying
+	the most relevant sentences. 
 
-> **Answer Processing** : Based on the expected answer type, then it process
+> **Answer Processing** : Based on the expected answer type, it then processes
 	the answer sentence to identify particular entity using name-entity
 	recognization technique and part of speech tagging technique
 
-> **Text summarization** : If type of question is definition or bot is unable
-	to identify named-entity from question, it summarize the text using ngram
+> **Text summarization** : If the type of question is definition or the bot is unable
+	to identify the named-entity from the question, it summarizes the text using ngram
 	tilting technique
 
 ## RUNNING THE TEST
@@ -50,7 +50,7 @@ Test script is included in this repository. Test script uses **Stanford Question
 $ python3 testQA.py
 ```
 
-Test script outputs the no of question and correct retrieval of the answer. And match this answer with what was tagged by human. It computes the accuracy of the QA answer prediction and stores final result in "accuracy.csv" 
+Test script outputs the number of questions and correct retrieval of the answer and match this answer with what was tagged by human. It computes the accuracy of the QA answer prediction and stores final result in "accuracy.csv" 
 
 Accuracy of prediction is defined by:
 
@@ -63,7 +63,7 @@ Accuracy of prediction is defined by:
 ### Result of Passage Retrieval
 Accuracy of passage retrieval using TF-IDF was **69.69%** when tested over 422 articles of SQuAD dataset and approx 87599 questions cross domain.
 
-After removing stopwords and using Porter Stemmer, this accuracy parameter improved to **77.49%**.
+After removing the stop words and using Porter Stemmer, this accuracy parameter improved to **77.49%**.
 
 On Further analysis, **94.23%** of passage retrieval contains the equivalant  paragraph in top 3 returned paragraph.
 
